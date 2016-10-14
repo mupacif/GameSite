@@ -1,0 +1,11 @@
+## YAML Template.
+---
+pacee_Game_home:
+    path:     /
+    defaults: { _controller: paceeGameBundle:Show:index }
+    
+    
+    
+pacee_Game_page:
+    path:     /games/{name}_cake
+    defaults: { _controller: paceeGameBundle:Show:show }

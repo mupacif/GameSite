@@ -1,0 +1,4 @@
+
+pacee_studio:
+    resource: "@paceeGameBundle/Resources/config/routing.yml"
+    prefix:   /

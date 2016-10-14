@@ -1,0 +1,14 @@
+{% extends "paceeGameBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} Play Game{% endblock %}
+
+
+{% block body %}
+    {% for url,game in games %}
+
+        <div  class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col1"><a href="{{path('pacee_Game_page',{'name':url})}}"><img class="gameimg" src="{{asset('games/'~url~'/img.jpg') }}"> <p >{{game.name}}</p></a></div>
+            {% endfor %}
+
+{% endblock %}  
+
+

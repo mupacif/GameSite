@@ -1,0 +1,89 @@
+
+
+
+
+
+body{
+    background-image:url(img/gplaypattern.png);
+
+}
+#top1 {
+    height: 50px;
+    background: #454646;
+      font-family: 'Muli';
+}
+#head {
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+ #head{
+     display: none;
+    
+ }
+}
+input[type="search"] {
+    -webkit-appearance: textfield;
+    background-image: url(img/search-icon.png);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: 4px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding-left: 28px;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-top:10px;
+    height: 29px;
+    width: 210px;
+      font-family: 'Muli';
+    
+}
+#reg {
+    padding-right: 30px;
+}
+#logo {
+    width: 90px;
+    margin-left: 10px;
+    
+}
+.spanreg {
+    float: right;
+    margin-top: 13px;
+    margin-left: 30px;
+}
+.labelregister {
+    color: white;
+}
+
+#body{
+     background-color: white;
+
+    
+     -webkit-box-shadow: 0px 4px 12px -2px rgba(82,82,82,1);
+-moz-box-shadow: 0px 4px 12px -2px rgba(82,82,82,1);
+box-shadow: 0px 4px 12px -2px rgba(82,82,82,1);
+
+padding: 10px;
+}
+.gameimg{
+    width:100%;
+    
+}
+
+.col1
+{text-align: center;
+
+ padding:30px;
+   font-family: 'Muli';
+}   
+.col1 p{
+    margin-top:0.8em;
+}
+footer{
+    background-color:#454646;
+    width:100%;
+    height:60px;
+   
+}
