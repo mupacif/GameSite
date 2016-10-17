@@ -19,8 +19,14 @@
         <header>
             <div id="top1">
                 <img id="logo" src="{{asset('img/logo.png')}}">
-                <input type="search" placeholder="Search game"><span id="reg" class="spanreg"><label  class="labelregister">Login</label ></span><span class="spanreg"><label  class="labelregister">Register</label>
+                <input type="search" placeholder="Search game">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <label  class="labelregister">  Connecté en tant que {{ app.user.username }} </label>
+                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                {% else %}
 
+                    <span id="reg" class="spanreg"><label  class="labelregister"> <a href="{{ path('fos_user_security_login') }}">Login</a></label ></span><span class="spanreg"><label  class="labelregister">    <a href="{{ path('fos_user_registration_register') }}">Register</a></label>
+                    {% endif %}
                 </span>
 
 
