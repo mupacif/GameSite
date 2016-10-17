@@ -1,9 +1,3 @@
-pacee_user:
-    resource: "@paceeUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-
 pacee_studio:
     resource: "@paceeGameBundle/Resources/config/routing.yml"
     prefix:   /
