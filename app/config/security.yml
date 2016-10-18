@@ -28,6 +28,9 @@ security:
                 target:     /
             remember_me:
                 secret:     %secret% 
+    access_control:
+        - { path: ^/games/add$, roles: IS_AUTHENTICATED_REMEMBERED }
+       
             # activate different ways to authenticate
 
             # http_basic: ~
