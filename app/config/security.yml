@@ -7,6 +7,9 @@ security:
         main:
             id: fos_user.user_provider.username
 
+    encoders:
+           paceeUserBundle\Entity\User: sha512
+
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -22,7 +25,7 @@ security:
                 check_path: fos_user_security_check
             logout:
                 path:       fos_user_security_logout
-                target:     /Game
+                target:     /
             remember_me:
                 secret:     %secret% 
             # activate different ways to authenticate

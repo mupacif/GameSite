@@ -18,11 +18,11 @@
     <body>
         <header>
             <div id="top1">
-                <img id="logo" src="{{asset('img/logo.png')}}">
+                <a href="{{path('pacee_Game_home')}}"><img id="logo" src="{{asset('img/logo.png')}}"></a>
                 <input type="search" placeholder="Search game">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <label  class="labelregister">  Connecté en tant que {{ app.user.username }} </label>
-                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                   <span id="reg" class="spanreg"> <label  class="labelregister">  Connected as {{ app.user.username }} </label>
+                    <a href="{{ path('fos_user_security_logout') }}">Disconnect</a></span>
                 {% else %}
 
                     <span id="reg" class="spanreg"><label  class="labelregister"> <a href="{{ path('fos_user_security_login') }}">Login</a></label ></span><span class="spanreg"><label  class="labelregister">    <a href="{{ path('fos_user_registration_register') }}">Register</a></label>
