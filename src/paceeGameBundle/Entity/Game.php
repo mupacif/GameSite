@@ -2,71 +2,220 @@
 
 namespace paceeGameBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Game
+ *
+ * @ORM\Table(name="game")
+ * @ORM\Entity(repositoryClass="paceeGameBundle\Repository\GameRepository")
+ */
 class Game
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uri", type="string", length=255)
+     */
     private $uri;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
+     */
     private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="infos", type="text")
+     */
     private $infos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     */
     private $name;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="width", type="integer")
+     */
     private $width;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="height", type="integer")
+     */
     private $height;
-    
-    
-    public function getUri() {
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set uri
+     *
+     * @param string $uri
+     *
+     * @return Game
+     */
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+
+        return $this;
+    }
+
+    /**
+     * Get uri
+     *
+     * @return string
+     */
+    public function getUri()
+    {
         return $this->uri;
     }
 
-    public function setUri($uri) {
-        $this->uri = $uri;
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Game
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
         return $this;
     }
 
-        
-    public function getTitle() {
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function getInfos() {
+    /**
+     * Set infos
+     *
+     * @param string $infos
+     *
+     * @return Game
+     */
+    public function setInfos($infos)
+    {
+        $this->infos = $infos;
+
+        return $this;
+    }
+
+    /**
+     * Get infos
+     *
+     * @return string
+     */
+    public function getInfos()
+    {
         return $this->infos;
     }
 
-    public function getName() {
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Game
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getWidth() {
+    /**
+     * Set width
+     *
+     * @param integer $width
+     *
+     * @return Game
+     */
+    public function setWidth($width)
+    {
+        $this->width = $width;
+
+        return $this;
+    }
+
+    /**
+     * Get width
+     *
+     * @return int
+     */
+    public function getWidth()
+    {
         return $this->width;
     }
 
-    public function getHeight() {
+    /**
+     * Set height
+     *
+     * @param integer $height
+     *
+     * @return Game
+     */
+    public function setHeight($height)
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    /**
+     * Get height
+     *
+     * @return int
+     */
+    public function getHeight()
+    {
         return $this->height;
     }
-
-    public function setTitle($title) {
-        $this->title = $title;
-        return $this;
-    }
-
-    public function setInfos($infos) {
-        $this->infos = $infos;
-        return $this;
-    }
-
-    public function setName($name) {
-        $this->name = $name;
-        return $this;
-    }
-
-    public function setWidth($width) {
-        $this->width = $width;
-        return $this;
-    }
-
-    public function setHeight($height) {
-        $this->height = $height;
-        return $this;
-    }
-
-
-    
 }
+
