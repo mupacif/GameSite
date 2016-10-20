@@ -2,6 +2,7 @@
 
 namespace paceeGameBundle\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**

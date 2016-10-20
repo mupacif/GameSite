@@ -3,6 +3,7 @@
 namespace paceeGameBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Game
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="game")
  * @ORM\Entity(repositoryClass="paceeGameBundle\Repository\GameRepository")
  */
-class Game
-{
+class Game {
+
     /**
      * @var int
      *
@@ -69,8 +70,36 @@ class Game
      *
      * @return int
      */
-    public function getId()
-    {
+
+    /**
+     * @ORM\ManyToMany(targetEntity="paceeGameBundle\Entity\Category", cascade={"persist"})
+     */
+    private $categories;
+
+    public function __construct() {
+        $this->date = new \Datetime();
+        $this->categories = new ArrayCollection();
+    }
+
+    // Notez le singulier, on ajoute une seule catégorie à la fois
+    public function addCategory(Category $category) {
+        // Ici, on utilise l'ArrayCollection vraiment comme un tableau
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category) {
+        // Ici on utilise une méthode de l'ArrayCollection, pour supprimer la catégorie en argument
+        $this->categories->removeElement($category);
+    }
+
+    // Notez le pluriel, on récupère une liste de catégories ici !
+    public function getCategories() {
+        return $this->categories;
+    }
+
+    public function getId() {
         return $this->id;
     }
 
@@ -81,8 +110,7 @@ class Game
      *
      * @return Game
      */
-    public function setUri($uri)
-    {
+    public function setUri($uri) {
         $this->uri = $uri;
 
         return $this;
@@ -93,8 +121,7 @@ class Game
      *
      * @return string
      */
-    public function getUri()
-    {
+    public function getUri() {
         return $this->uri;
     }
 
@@ -105,8 +132,7 @@ class Game
      *
      * @return Game
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -117,8 +143,7 @@ class Game
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -129,8 +154,7 @@ class Game
      *
      * @return Game
      */
-    public function setInfos($infos)
-    {
+    public function setInfos($infos) {
         $this->infos = $infos;
 
         return $this;
@@ -141,8 +165,7 @@ class Game
      *
      * @return string
      */
-    public function getInfos()
-    {
+    public function getInfos() {
         return $this->infos;
     }
 
@@ -153,8 +176,7 @@ class Game
      *
      * @return Game
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -165,8 +187,7 @@ class Game
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -177,8 +198,7 @@ class Game
      *
      * @return Game
      */
-    public function setWidth($width)
-    {
+    public function setWidth($width) {
         $this->width = $width;
 
         return $this;
@@ -189,8 +209,7 @@ class Game
      *
      * @return int
      */
-    public function getWidth()
-    {
+    public function getWidth() {
         return $this->width;
     }
 
@@ -201,8 +220,7 @@ class Game
      *
      * @return Game
      */
-    public function setHeight($height)
-    {
+    public function setHeight($height) {
         $this->height = $height;
 
         return $this;
@@ -213,9 +231,8 @@ class Game
      *
      * @return int
      */
-    public function getHeight()
-    {
+    public function getHeight() {
         return $this->height;
     }
-}
 
+}
