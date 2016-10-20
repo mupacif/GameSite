@@ -9,3 +9,9 @@ pacee_Game_home:
 pacee_Game_page:
     path:     /games/{name}_cake
     defaults: { _controller: paceeGameBundle:Show:show }
+    
+    
+
+pacee_Game_add:
+    path:     /games/add
+    defaults: { _controller: paceeGameBundle:Show:addGame }
