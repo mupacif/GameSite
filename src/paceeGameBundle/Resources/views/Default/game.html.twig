@@ -6,25 +6,30 @@
 
 
 {% block body %}
-    
-    
-                        <div class="col-sm-push-2 col-sm-8">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                {{game.name}}
-                            </div>
-                            <div class="panel-body">
-                                <div>
-                                 <iframe src="{{game.uri}}/index.html" width="{{game.width}}" height="{{game.height}}" frameborder="0" style="display:block" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="form-group">
-                                    <label for="focusedInput">link</label>
-                                    <input class="form-control" id="focusedInput" type="text" value="{{url('pacee_Game_page',{'name':game.uri})}}">
-                                </div>
-                          {{game.infos}}
-                            </div>
-                        </div>
-                    </div
+
+
+    <div class="col-sm-push-2 col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{game.name}}
+            </div>
+            <div class="panel-body">
+                <div>
+                    {%if not game.local %}
+                        <iframe src="{{game.uri}}" width="{{game.width}}" height="{{game.height}}" frameborder="0" style="display:block" allowfullscreen></iframe>
+                    {%else%}
+                        <iframe src="{{game.uri}}/index.html" width="{{game.width}}" height="{{game.height}}" frameborder="0" style="display:block" allowfullscreen></iframe>
+                    {%endif%}
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="form-group">
+                    <label for="focusedInput">link</label>
+                    <input class="form-control" id="focusedInput" type="text" value="{{url('pacee_Game_page',{'name':game.name|replace({' ':"-"})})}}">
+                </div>
+                {{game.infos}}
+            </div>
+        </div>
+    </div
 {% endblock %}  

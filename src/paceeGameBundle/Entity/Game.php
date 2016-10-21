@@ -51,6 +51,20 @@ class Game {
     private $name;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="local", type="boolean")
+     */
+    private $local;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="thumb", type="string", length=255)
+     */
+    private $thumbnail;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="width", type="integer")
@@ -235,4 +249,50 @@ class Game {
         return $this->height;
     }
 
+    /**
+     * Set local
+     *
+     * @param boolean $local
+     *
+     * @return Game
+     */
+    public function setLocal($local) {
+        $this->local = $local;
+
+        return $this;
+    }
+
+    /**
+     * Get local
+     *
+     * @return boolean
+     */
+    public function getLocal() {
+        return $this->local;
+    }
+
+
+    /**
+     * Set thumbnail
+     *
+     * @param string $thumbnail
+     *
+     * @return Game
+     */
+    public function setThumbnail($thumbnail)
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Get thumbnail
+     *
+     * @return string
+     */
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
+    }
 }

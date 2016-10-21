@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use paceeGameBundle\Entity\Game;
 
@@ -22,7 +23,7 @@ class ShowController extends Controller {
     public function indexAction() {
 
         //$gameManager = $this->container->get('pacee_game.GameManager');
-         $repository = $this
+        $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('paceeGameBundle:Game')
@@ -37,9 +38,15 @@ class ShowController extends Controller {
      */
     public function showAction($name) {
 
-        $gameManager = $this->container->get('pacee_game.GameManager');
-        $game = $gameManager->getGames()->get($name);
 
+        $name = str_replace("-", " ", $name);
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('paceeGameBundle:Game')
+        ;
+
+        $game = $repository->findOneByName($name);
         if (isset($game)) {
 
             return $this->render('paceeGameBundle:Default:game.html.twig', array('game' => $game));
@@ -53,6 +60,8 @@ class ShowController extends Controller {
 
         $form = $this->get('form.factory')->createBuilder(FormType::class, $game)
                 ->add('uri', TextType::class)
+                ->add('local', CheckboxType::class, array('required' => false))
+                ->add('thumbnail', TextType::class, array('required' => false))
                 ->add('title', TextType::class)
                 ->add('infos', TextareaType::class)
                 ->add('name', TextType::class)
@@ -62,7 +71,7 @@ class ShowController extends Controller {
                     'class' => 'paceeGameBundle:Category',
                     'choice_label' => 'name',
                     'multiple' => true,
-                    'expanded'=>true
+                    'expanded' => true
                 ))
                 ->add('save', SubmitType::class)
                 ->getForm();
