@@ -70,10 +70,12 @@ class ShowController extends Controller {
             // On vérifie que les valeurs entrées sont correctes
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
             if ($form->isValid()) {
+                $save = $this->getDoctrine()->getManager();
+                $save->persist($game);
+                $save->flush();
+                //return new Response("GGG ");
 
-                return new Response("GGG ");
-
-                // return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
+                return $this->redirectToRoute('pacee_Game_home');
             }
         }
 
