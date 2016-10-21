@@ -21,9 +21,15 @@ class ShowController extends Controller {
      */
     public function indexAction() {
 
-        $gameManager = $this->container->get('pacee_game.GameManager');
-        //return new Response($gameManager->getCount());
-        return $this->render('paceeGameBundle:Default:index.html.twig', array('games' => $gameManager->getGames()));
+        //$gameManager = $this->container->get('pacee_game.GameManager');
+         $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('paceeGameBundle:Game')
+        ;
+
+        $listGames = $repository->findAll();
+        return $this->render('paceeGameBundle:Default:index.html.twig', array('games' => $listGames));
     }
 
     /**
